@@ -12,7 +12,7 @@ laszewski@gmail.com
 
 ## Architecture
 
-* We leverage or improve <https://github.com/cloudmesh/cm-burn>
+We leverage or improve <https://github.com/cloudmesh/cm-burn>
 
 Our goal is to craete and contrast the creation of Federated kubernetes clusters. We have different models
 
