@@ -28,6 +28,12 @@ This requires some investigation into kubernetes
 
 Some images are shown in cm-burn that we may want tocopy here.
 
+## Technologies used
+
+* cloudmesh cm-burn
+* cloudmesh-inventory
+* Kubernetes
+
 ## Benchmark and Evaluation
 
 ## Conclusion
