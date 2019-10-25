@@ -1,3 +1,7 @@
+<!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
+
+<!-- vim: set tw=79 fo+=t fo-=l: -->
+
 # Federated Kubernetes Clusters With Raspberry Pi
 
 Sub and Gregor von Laszewski
