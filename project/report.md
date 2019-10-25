@@ -4,9 +4,11 @@
 
 # Federated Kubernetes Clusters With Raspberry Pi
 
-Sub and Gregor von Laszewski
+Sub and Gregor von Laszewski, [fa19-516-148](https://github.com/cloudmesh-community/fa19-516-148)
 
 laszewski@gmail.com
+
+[Insights](https://github.com/cloudmesh-community/fa19-516-148/graphs/contributors)
 
 ## Abstract
 
