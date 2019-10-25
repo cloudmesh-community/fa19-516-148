@@ -36,8 +36,8 @@ with open('/etc/hosts', 'w') as f: # and write the modified version
 
 # change the IP address of this Pi to the new addr
 # use sed inplace to change '192.168.xxx.xxx/24' to '192.168.colornum.pinum/24'
-# the regexp matches and replaces just '.x.x/24' where 'x' is 1 or more numbers
-os.system("sed -ri 's/\.[0-9]+\.[0-9]+\/24/\.{}\.{}\/24/g' /etc/dhcpcd.conf".format(colornum, pinum))
+# actually the regexp matches/replaces just '.x.x/24' where 'x' is 1-3 digits
+os.system("sed -ri 's/\.[0-9]{1,3}\.[0-9]{1,3}\/24$/\." + colornum + "\." + pinum + "\/24/' /etc/dhcpcd.conf")
 
 
 # reboot
