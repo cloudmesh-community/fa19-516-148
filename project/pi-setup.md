@@ -85,11 +85,13 @@ $ mount /dev/mmcblk0p1 mount # primary partition
 $ mount /dev/mmcblk0p0 mount/boot # boot partition
 ```
 
-Authorize your SSH key:
+Authorize your SSH key, for both the `pi` user and for `root`:
 
 ```
 mkdir mount/home/pi/.ssh
+mkdir mount/root/.ssh
 cp ~/.ssh/id.pub mount/home/pi/.ssh/authorized_keys
+cp ~/.ssh/id.pub mount/root/.ssh/authorized_keys
 ```
 
 Disable SSH password login: in `etc/ssh/sshd_config`, uncomment the
@@ -117,6 +119,10 @@ for network interfaces instead of the newer naming style which will assign a
 name dependent on the Pi's MAC address - and that is incompatible with having a
 single image for all the Pis.
 
+Copy the Pi configuration script from this repository to the home folder of the
+Pi's root user, so that it can be executed when the Pi is being configured:
+`cp configure.py mount/root/`
+
 Unmount both partitions (boot first, since it is mounted inside the primary
 partition on the host computer):
 
@@ -142,4 +148,27 @@ Set the IP address to the Pi's desired permanent IP address by changing the
 static address line added to the bottom of `/etc/dhcpcd.conf` when creating the
 master image.
 
-Now, Kubernetes can be installed.
+These steps can be automated with the `configure.py` script copied to the
+master disk image. The script takes in three arguments: the cluster group name
+(e.g. red, blue, green), the cluster number (e.g. red = cluster 1, blue =
+cluster 2, green = cluster 3), and the Pi number (within that cluster). The
+`configure.py` script will set the hostname to `cluster_name + pi_number`: Pi#47
+in the blue cluster will be given the hostname `blue`. It will also set the IP
+to `192.168.cluster_number.pi_number`, so if blue is cluster #2, the Pi will be
+given the IP `192.168.2.47`.
+
+Since the configure script edits system files, it must be run as root. The
+benefits of the single master image starts to come into play here: with one
+command, a Pi can be configured or *reconfigured* to be part of any cluster.
+New Pis will join the network at 192.168.0.3. To configure them, this command
+can be used from the cluster controller Pi:
+`ssh root@192.168.0.2 /root/configure.py blue 2 47` - and the Pi will be
+configured as described above. If Pi 37 from the red group needs to be changed
+to Pi 20 in the green group, just run this command from the cluster controller:
+`ssh root@192.168.1.37 /root/configure.py green 3 20`.
+
+The configure script will restart the Pi so that the hostname/IP change can be
+applied.
+
+Now, the Pi is ready to have Kubernetes installed. (TODO: run apt update on
+first boot - this can also be put into the master image)
