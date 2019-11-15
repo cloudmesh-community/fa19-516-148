@@ -175,6 +175,8 @@ first boot - this can also be put into the master image)
 
 ## Using cm-pi-burn
 
+In a root shell:
+
 ```
 # cm-pi-burn.py image get latest
 # cm-pi-burn.py image ls
@@ -186,3 +188,29 @@ first boot - this can also be put into the master image)
 
 After burning, on each Pi use the `raspi-config` command to set the keyboard
 layout and locale, and to set up WiFi if necessary.
+
+# Kubernetes
+
+Add the Kubernetes repository to the package manager and install Kubernetes (in
+a root shell):
+
+```
+# echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" >>/etc/apt/sources.list.d/kubernetes.list
+# apt get update
+# apt get install -y kubelet kubeadm kubectl
+```
+
+Initialize the master node:
+
+```
+# kubeadm init
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+And have worker nodes join the cluster:
+
+```
+$ kubeadm join [MASTER-IP:6443] --token [TOKEN] --discovery-token-ca-cert-hash [HASH]
+```
