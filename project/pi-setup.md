@@ -172,3 +172,17 @@ applied.
 
 Now, the Pi is ready to have Kubernetes installed. (TODO: run apt update on
 first boot - this can also be put into the master image)
+
+## Using cm-pi-burn
+
+```
+# cm-pi-burn.py image get latest
+# cm-pi-burn.py image ls
+# cm-pi-burn.py create --image=2019-09-26-raspbian-buster-lite
+                       --device=/dev/mmcblk0
+                       --hostname=red[2-6] --ipaddr=192.168.1.[2-6]
+                       --sshkey=id_ed25519
+```
+
+After burning, on each Pi use the `raspi-config` command to set the keyboard
+layout and locale, and to set up WiFi if necessary.
