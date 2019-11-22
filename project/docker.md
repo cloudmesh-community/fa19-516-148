@@ -54,6 +54,8 @@ if __name__ == '__main__':
 	httpd.serve_forever()
 ```
 
+---
+
 Build and then run the Docker image as follows:
 
 ```
@@ -69,3 +71,12 @@ $ curl -X POST -d 5 localhost:8080
 
 The `-d` option specifies the data curl POSTs - in this case, the number to
 compute the factorial of.
+
+---
+
+To publish the image to Docker Hub:
+
+```
+$ sudo docker build -t yourUsername/factorial:v1 .
+$ sudo docker push yourUsername/factorial:v1
+```
