@@ -2,7 +2,7 @@
 
 <!-- vim: set tw=79 fo+=t fo-=l: -->
 
-# Docker Benchmarking/Test Image
+# Federated Kubernetes Clusters With Raspberry Pi - Docker Benchmarking/Test Image
 
 A simple Docker image is used to test and benchmark the cluster. The image runs
 a HTTP server which will compute the factorial of a POSTed number and
