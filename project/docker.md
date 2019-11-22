@@ -13,7 +13,7 @@ Make a file called `Dockerfile` with content:
 ```
 FROM python:latest
 COPY prog.py /
-EXPOSE 8080
+EXPOSE 80
 CMD python3 prog.py
 ```
 
@@ -58,7 +58,7 @@ Build and then run the Docker image as follows:
 
 ```
 $ sudo docker build -t factorial .
-$ sudo docker run -it --name factorial -p 8080:80 factorial
+$ sudo docker run --rm -it --name factorial -p 8080:80 factorial
 ```
 
 You can then test the program with this command:
