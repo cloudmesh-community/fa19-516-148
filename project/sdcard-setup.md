@@ -1,8 +1,6 @@
-<!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
-
-<!-- vim: set tw=79 fo+=t fo-=l: -->
-
 # Federated Kubernetes Clusters With Raspberry Pi - Burning SD Cards
+<!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
+<!-- vim: set tw=79 fo+=t fo-=l: -->
 
 # Using cm-pi-burn
 

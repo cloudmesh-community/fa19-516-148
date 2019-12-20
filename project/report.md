@@ -1,4 +1,6 @@
 # Federated Kubernetes Clusters With Raspberry Pi
+<!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
+<!-- vim: set tw=79 fo+=t fo-=l: -->
 
 Sub and Gregor von Laszewski, [fa19-516-148](https://github.com/cloudmesh-community/fa19-516-148)
 
@@ -54,12 +56,12 @@ Some images are shown in cm-burn that we may want tocopy here.
 
 ## Other documentation files
 
-* `sdcard-setup.md` contains documentation on cm-pi-burn and how the Pi
-  images are modified/initialized. Also refer to the `cm-pi-burn.md`
+* [`sdcard-setup.md`](sdcard-setup.md) contains documentation on cm-pi-burn and
+  how the Pi images are modified/initialized. Also refer to the `cm-pi-burn.md`
   file in the `cm-burn` repo.
 
-* `pi-setup.md` contains documentation on post-burn configuration that
-  must be done after a Pi is booted up for the first time.
+* [`pi-setup.md`](pi-setup.md) contains documentation on post-burn configuration
+  that must be done after a Pi is booted up for the first time.
 
-* `docker.md` contains documentation on creating the Docker image used
-  for testing.
+* [`docker.md`](docker.md) contains documentation on creating the Docker image
+  used for testing.
