@@ -103,3 +103,22 @@ be done manually on every Pi. It is part of the Docker install script at
 <https://get.docker.com> and errors out if run remotely via a SSH command
 command (e.g. `ssh pi7 'curl https://get.docker.com | sh'`); instead we must
 `ssh pi7` to get a shell and then run the `curl|sh` command.
+
+
+## Pytests
+
+A number of pytests exists that check if the cluster is properly fucntioning
+
+* ... list tests here and describeb what they do
+
+## Example
+
+We run the following example on teh cluster to demonstarte its use
+
+... describe
+
+## Benchmark
+
+We observe the following benchmark results
+
+... describe what the results are
