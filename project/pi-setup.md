@@ -110,18 +110,23 @@ command (e.g. `ssh pi7 'curl https://get.docker.com | sh'`); instead we must
 A number of pytests exists that check if the cluster is properly fucntioning
 
 * ... list tests here and describeb what they do
+:o2: network more important
+
 
 ## Example
 
 We run the following example on teh cluster to demonstarte its use
 
 ... describe
+:o2: network more important
+
 
 ## Benchmark
 
 We observe the following benchmark results
 
 ... describe what the results are
+:o2: network more important
 
 ## Network issues 
 
@@ -156,5 +161,14 @@ There are four IU WiFi networks, IU Secure, eduroam, IU DeviceNet, and IU Guest.
 The issue is that right now I am using raspbian lite on the Pis. IU DeviceNet uses MAC address enrollment which is OK, but IU Guest requires login through a web browser. I tried two CLI web browsers lynx and links to try to login to IU Guest but they failed (probably because the login requires JavaScript). So today I will try installing full 'normal' GUI raspbian on the master, reinstalling kubernetes and making a master node on it, and connecting it to IU Guest.
 
  
+### Network tunneling
 
-I have a final today from 12:30 to 2:30 and another final project due tonight. So I don't know whether I will have enough time to run benchmarks today. But I will be able to attempt the network stuff and hopefully it will not be blocked.
+is it possible to set up a tunnel between workers and hosts to get access to the network from the master node only, and than the workers use a tunnel to get to the master?
+
+
+* <https://www.ssh.com/ssh/tunneling/example>
+
+```bash
+$ ssh -L 80:intra.example.com:80 gw.example.com
+```
+
