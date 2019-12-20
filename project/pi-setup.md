@@ -1,10 +1,45 @@
-# Federated Kubernetes Clusters With Raspberry Pi - Pi Setup / Configuration
+# Federated Kubernetes Clusters With Raspberry Pi
+
 <!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
 <!-- vim: set tw=79 fo+=t fo-=l: -->
 
-After burning, on each Pi use the `raspi-config` command to set the keyboard
-layout and locale, and to setup WiFi if necessary.
-Also, set the time on each pi:
+After burning the pis we need to set up the pis. We developed a convenient set of deployment scripts that makes this possible
+
+
+```
+$ cms pi setup host[01-10]
+$ cms pi kubernetes deploy host[01-10]
+```
+
+To configure the master and worker nodes we use the command (we assume host01 is the master):
+
+```bash
+$ cms pi kubernetes setup --master=host01 --worker=host[02-10]
+```
+
+If the two parameters --master and --worker are ommitted it is assumed that the first node is the worker node.
+
+The services are integrated into an inventory file that can be inspected with the command
+
+```bash
+$ cms inventory
+```
+
+## Details
+
+### cms pi setup 
+
+After burning each Pi, we need use the `raspi-config` command to set the keyboard
+layout and locale. 
+
+:o2: improve and do this via commandline Gregor will than integrate in cms script
+
+In addition we need to set up WiFi if necessary. 
+
+:o2: This however can also be integrated into the burn or a cms command can be developed that sets this after the burn
+
+It is very important to set the time on each pi.
+
 
 ```bash
 $ sudo timedatectl set-ntp false
@@ -14,9 +49,16 @@ $ sudo timedatectl set-time "2019-12-18 14:20:52"
 
 (you can get a list of timezones with `timedatectl list-timezones`)
 
-Add the Kubernetes repository to the package manager and install Kubernetes.
-First, Docker needs to be installed as the container runtime.
-Additionally, Kubernetes requires swap to be disabled.
+:o2: can this be automated, e.g. after the burn have a program that checksa . status value or the existance of a file and if its not there run some commands to automatically configure?
+
+
+### cms pi deploy kubernetes 
+
+For our install we will use docker as the container runtime environment.
+To install  Kubernetes, we must first 
+add the Kubernetes repository to the package manager.
+Additionally, Kubernetes requires swap to be disabled. The following script 
+does the instalation 
 
 ```bash
 $ # install Docker
