@@ -5,6 +5,9 @@
 
 After burning the pis we need to set up the pis. We developed a convenient set of deployment scripts that makes this possible
 
+repo 
+
+cloudmesh-pi
 
 ```
 $ cms pi setup host[01-10]
