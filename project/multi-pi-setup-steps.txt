@@ -14,8 +14,15 @@ COMMANDs (include the quotes!):
 
 On each pi individually SSH in and execute this command:
 $ curl -sSl https://get.docker.com | sh
-(this install script needs to be executed in a normal interactive SSH session or
-  else it errors out)
+  This install script needs to be executed in a normal interactive SSH session or
+    else it errors out!
+	The easiest way is to do this:
+		for i in pi1 pi2 pi3 pi4 pi5; do ssh $i; done
+	That will open a SSH session to every pi.
+	Then, paste in to each SSH session:
+		curl -sSl https://get.docker.com | sh ; tput bel; exit
+	That will run the command and exit the SSH session (and ring the terminal bell to
+	  notify the user), allowing the loop to start the next session.
 
 Then these COMMANDs with the for loop again:
 'echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list'
