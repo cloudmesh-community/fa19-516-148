@@ -1,7 +1,11 @@
-Many-pi control via shell looping
+Many-pi control via shell looping, TODO make this a CMS command
 
-$ for i in pi1 pi2 pi3 pi4 pi5; do ssh $i COMMAND; done
- (where pi1, pi2 are replaced with Pi IPs, or hostnames if they resolve to the IPs)
+$ for i in pi@PI1_IP pi@PI2_IP pi@PI3_IP pi@PI4_IP pi@PI5_IP; do ssh $i COMMAND; done
+  Alternatively add to ~/.ssh/config entries of the form:
+	  host pi1
+		hostname PI1_IP
+		user pi
+	And then you can type: for i in pi1 pi2 pi3 pi4 pi5; do ssh $i COMMAND; done
 
 COMMANDs (include the quotes!):
 'sudo timedatectl set-ntp false'
