@@ -3,7 +3,7 @@
 <!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
 <!-- vim: set tw=79 fo+=t fo-=l: -->
 
-After burning the pis we need to set up the pis. We developed a convenient set
+After burning the Pis we need to set up the Pis. We developed a convenient set
 of deployment scripts that makes this possible. First, you must use
 cloudmesh-inventory to add your Pis to the inventory.
 
@@ -24,6 +24,10 @@ manually run rapsi-setup on each Pi to connect to WiFi.
 ```bash
 $ cms pi ssh pi[1-5]
 ```
+
+TODO Investigate automatically setting WiFi on each Pi, given the SSID+password
+once. See `do_wifi_ssid_passphrase`, line 1655:
+<https://github.com/RPi-Distro/raspi-config/blob/master/raspi-config#L1655>
 
 Once connected, this configures their timezones:
 
@@ -80,10 +84,10 @@ $ cms pi kubernetes setup --master=host01 --worker=host[02-10]
 
 ## Details
 
-### cms pi setup 
+### cms pi setup
 
 After burning each Pi, we need use the `raspi-config` command to set the keyboard
-layout and locale. 
+layout and locale.
 
 :o2: improve and do this via commandline Gregor will than integrate in cms script
 

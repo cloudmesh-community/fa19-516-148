@@ -4,6 +4,9 @@
 
 # Using cm-pi-burn
 
+TODO Check that this is up-to-date with cm-pi-burn documentation. Has the
+command API changed?
+
 In a root shell:
 
 ```
@@ -14,6 +17,10 @@ In a root shell:
                        --hostname=red[2-6] --ipaddr=192.168.1.[2-6]
                        --sshkey=id_ed25519
 ```
+
+That's it.
+
+---
 
 # Alternative Approach Theory
 

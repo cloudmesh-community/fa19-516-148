@@ -2,7 +2,7 @@
 <!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
 <!-- vim: set tw=79 fo+=t fo-=l: -->
 
-Sub and Gregor von Laszewski, [fa19-516-148](https://github.com/cloudmesh-community/fa19-516-148)
+Sub Raizada and Gregor von Laszewski, [fa19-516-148](https://github.com/cloudmesh-community/fa19-516-148)
 
 laszewski@gmail.com
 
@@ -10,9 +10,7 @@ laszewski@gmail.com
 
 :o2: please report on progress on the kubernetes cluster
 
-:o2: unfortunately the first line in the document must be a heading
-
-do you have a command such as 
+do you have a command such as
 
 cms kubernetes deploy ... ?
 
@@ -36,12 +34,12 @@ clusters. We have different models
 Goal is to create a federation of them. In each case the fedaration can
 be achieved in one of two ways.
 
-1. consider a big kubernetis cluster that integrates all resources
+1. consider a big kubernetes cluster that integrates all resources
 2. consider a cluster of kubernetes clusters
 
 This requires some investigation into kubernetes
 
-Some images are shown in cm-burn that we may want tocopy here.
+Some images are shown in cm-burn that we may want to copy here.
 
 ## Technologies used
 
