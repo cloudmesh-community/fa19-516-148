@@ -139,9 +139,9 @@ In addition we need to set up WiFi if necessary.
 
 ## Pytests
 
-See [`test.py`](test.py). Run it with the name given to the master node in
-cloudmesh-inventory (with the examples used earlier in this documentation, that
-was `pi1`).
+See [`test.py`](test.py). Run it with the the first argument being the name
+given to the master node in cloudmesh-inventory (with the examples used earlier
+in this documentation, that was `pi1`).
 
 ## Example
 
