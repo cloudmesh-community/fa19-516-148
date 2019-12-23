@@ -161,41 +161,23 @@ TODO ... describe what the results are
 
 ## Network issues
 
-### Internet access
 Kubernetes requires each node (master and worker) to have an internet
-connection. The Pis have two interfaces, Ethernet and WiFi.
+connection. The Pis have two interfaces, Ethernet and WiFi. If their Ethernet
+connection provides an internet connection, then WiFi is not required and can
+be ignored. If their WiFi interface provides an internet connection, then
+Ethernet is not required and can be ignored. However, the nodes must be able to
+communicate with each other *on the interface that provides the internet
+connection*. For example, if they are connected to each other via Ethernet and
+to the internet via WiFi, but they cannot communicate with each other via WiFi
+(in cases where your WiFi provider implements AP isolation), the cluster will
+*not* work.
 
-:o2: remove I and make general
+Secondly, it is highly advisable to provide the nodes with a static IP address
+(via the DHCP assignment settings on a WiFi router, or through cm-pi-burn for
+Ethernet), so that they are not subject to changing DHCP IP addresses. If the
+IP address of a node changes, it may be necessary to reconfigure the cluster to
+an unknown degree.
 
-:o2: split up into two sections general network issues that apply regardless of iu or not and specific iu issues
-
-I have run into one critical issue regarding network connections; the master node is setup and ready to accept connections, and the worker nodes are prepared but will not join the cluster when I run the join command. The Pis have two network connections, one is local on the switch (connecting all the Pis and my computer, but no internet) and the other is their regular internet connection through IU WiFi. I've tried running the cluster in all three connnection configurations: ethernet/switch only, WiFi only, and with both active at the same time. What I've gathered over many hours of debugging is that:
-
- 
-
-*  k8s will not run without an internet connection available on the machine (I tried ethernet-only and it failed, workers still tried to connect to the master via its public internet-accessible IP, it also failed with WiFi completely disabled - this GitHub issue suggests that using k8s without an internet connection is completely unsupported: https://github.com/kubernetes/kubeadm/issues/982)
-
-:o2: are you living in private residence whre you could use controlable wifi by you?
-
-*  IU WiFi implements client isolation so that clients on the same network cannot talk to each other. Thus, the Pis cannot communicate over WiFi. And from the previous bullet point, they cannot communicate over ethernet only since there is no internet available on that interface, which is incompatible with k8s.
-
-* IU network dows not allow network forwarding i believe, e.g making one node the master. 
-
-The IU WiFi networks have some form of AP isolation enabled - (https://kb.iu.edu/d/bdjb#incompatible - that article is specifically about IU DeviceNet but I have observed the same behaviour on IU Secure). I have experienced personally also being unable to connect to other devices on the IU WiFi network, even when trying to connect directly to their IP address (not multicast/broadcast or mDNS). And it seems the same thing is going on with the Pis on IU DeviceNet. When I am SSH'd into pi1, I can use the private ethernet swtich IPs to SSH into pi2 (from pi1), and I can use nmap to port scan another pi. But when I use the WiFi public IPs, I cannot SSH from one pi into another, and nmap reports that its scan attempts are being dropped.
-
- 
-
-There is one loophole that may exist: from my computer, connected to IU Secure, I can use WiFi to SSH into the Pis, which are connected to IU DeviceNet. So *perhaps* the isolation is only enabled within each WiFi network.
-
- 
-
-There are four IU WiFi networks, IU Secure, eduroam, IU DeviceNet, and IU Guest. The Pis can only connect to the last two. So I suspect it might be fixable by having the master Pi connected to IU Guest and the rest of the Pis connected (as currently) to IU DeviceNet. Then perhaps the network will allow them to communicate.
-
- 
-
-The issue is that right now I am using raspbian lite on the Pis. IU DeviceNet uses MAC address enrollment which is OK, but IU Guest requires login through a web browser. I tried two CLI web browsers lynx and links to try to login to IU Guest but they failed (probably because the login requires JavaScript). So today I will try installing full 'normal' GUI raspbian on the master, reinstalling kubernetes and making a master node on it, and connecting it to IU Guest.
-
- 
 ### Network tunneling
 
 is it possible to set up a tunnel between workers and hosts to get access to the network from the master node only, and than the workers use a tunnel to get to the master?
