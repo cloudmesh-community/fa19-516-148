@@ -60,26 +60,49 @@ The remaining setup steps are automated:
 $ cms pi setup2 pi[1-5]
 ```
 
+This step can take a long time. The terminal bell will be rung when
+cloudmesh-pi is finished.
+
 The final two steps are to configure the master node and make workers join the
 cluster.
 
 ```bash
 $ cms pi setupmaster pi1
 ```
+This step can take a long time. The terminal bell will be rung when
+cloudmesh-pi is finished.
 
-When setupmaster completes, the last line of its output will contain a 'join
+When `setupmaster` completes, the last line of its output will contain a 'join
 command' which can be run on the workers to join the cluster. This can be
 automatically run on every Pi:
 
 ```bash
 # Note that pi1 is excluded here since it is the master.
-$ cms pi cmd pi[2-5] JOIN_COMMAND
-# Wrap the join command in quotes. Full example:
-$ cms pi cmd pi[2-5] "kubeadm join PI1_IP:6443 --token asdf.ghjkl --discovery-token-ca-cert-hash sha256:asdf
+$ "sudo JOIN_COMMAND" | cms pi cmd pi[2-5]
+# Full example:
+$ echo "sudo kubeadm join 192.168.1.122:6443 --token knlc4l.2pfdig67hb2cv16b --discovery-token-ca-cert-hash sha256:c9d558a1d63ddc27d5278c5ad3582d9697eb25b33c1c5643a10bec5b066969d4" | cms pi cmd pi[3-5]
 ```
 
+`cms pi cmd` take the command from stdin instead of as an argument
+(`cms pi cmd pi[2-5] "sudo kubectl join ..."`) because the cloudmesh shell
+parser appears to ignore the quotation marks around "sudo kubectl join" and
+thus the command is not parseable as a single argument.
+
+To verify that everything is working correctly, SSH to the master node (`cms pi
+ssh pi1`) and run `kubectl get nodes`. Alternatively:
+
 ```bash
-$ cms pi kubernetes setup --master=host01 --worker=host[02-10]
+$ echo "kubectl get nodes" | cms pi cmd pi1
+```
+
+The output should be like this:
+```
+NAME   STATUS     ROLES    AGE    VERSION
+pi1    NotReady   master   27m    v1.17.0
+pi2    NotReady   <none>   20m    v1.17.0
+pi3    NotReady   <none>   101s   v1.17.0
+pi4    NotReady   <none>   76s    v1.17.0
+pi5    NotReady   <none>   39s    v1.17.0
 ```
 
 ## Details
@@ -105,7 +128,7 @@ A number of pytests exists that check if the cluster is properly fucntioning
 
 ## Example
 
-We run the following example on teh cluster to demonstarte its use
+We run the following example on the cluster to demonstrate its use
 
 TODO ... describe
 
@@ -117,7 +140,11 @@ We observe the following benchmark results
 TODO ... describe what the results are
 :o2: network more important
 
-## Network issues 
+## Network issues
+
+### Internet access
+Kubernetes requires each node (master and worker) to have an internet
+connection. The Pis have two interfaces, Ethernet and WiFi.
 
 :o2: remove I and make general
 

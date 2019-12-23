@@ -11,6 +11,7 @@ from cloudmesh.inventory.inventory import Inventory
 from pprint import pprint
 from cloudmesh.common.debug import VERBOSE
 import os
+import sys
 import time
 
 class PiCommand(PluginCommand):
@@ -70,11 +71,10 @@ class PiCommand(PluginCommand):
                 pi setup1 HOSTS
                 pi setup2 HOSTS
                 pi setupmaster HOSTS
-                pi cmd HOSTS CMD
+                pi cmd HOSTS
 
           Arguments:
               HOSTS   hostlist
-              CMD     command
 
           Description:
 
@@ -94,9 +94,10 @@ class PiCommand(PluginCommand):
                   Configure the HOSTS as Kubernetes masters.
                   HOSTS will probably just be one hostname here.
 
-              pi cmd HOSTS CMD:
+              pi cmd HOSTS:
                   Run CMD on every host via SSH.
-                  If CMD is more than one word it should be contained in quotes.
+                  CMD is specified on stdin. For example:
+                      $ echo "uname -a" | cms pi cmd pi[1-5]
         """
 
         hosts = Parameter.expand(arguments.HOSTS)
@@ -115,6 +116,9 @@ class PiCommand(PluginCommand):
             self.setup_2(ips)
         elif arguments.setupmaster:
             self.setup_master(ips)
+        elif arguments.cmd:
+            # [:-1] to ignore the \n at the end of stdin
+            self.run_many_commands(ips, [sys.stdin.read()[:-1]])
 
     def setup_1(self, ips):
         tz = 'America/Indiana/Indianapolis'
@@ -150,6 +154,7 @@ class PiCommand(PluginCommand):
         ]
 
         self.run_many_commands(ips, commands)
+        print('\a')
 
     def setup_master(self, ips):
         commands = [
@@ -160,3 +165,4 @@ class PiCommand(PluginCommand):
         ]
 
         self.run_many_commands(ips, commands)
+        print('\a')
