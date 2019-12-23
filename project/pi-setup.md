@@ -139,11 +139,9 @@ In addition we need to set up WiFi if necessary.
 
 ## Pytests
 
-A number of pytests exists that check if the cluster is properly fucntioning
-
-* TODO ... list tests here and describeb what they do
-:o2: network more important
-
+See [`test.py`](test.py). Run it with the name given to the master node in
+cloudmesh-inventory (with the examples used earlier in this documentation, that
+was `pi1`).
 
 ## Example
 
