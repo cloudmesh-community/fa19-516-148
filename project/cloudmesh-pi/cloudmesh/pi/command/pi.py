@@ -157,6 +157,7 @@ class PiCommand(PluginCommand):
             "'sudo dphys-swapfile uninstall'",
             "'sudo update-rc.d dphys-swapfile remove'",
             "'sudo apt -y purge dphys-swapfile'",
+            "'sudo /sbin/sysctl net.bridge.bridge-nf-call-iptables=1'",
             "'sudo reboot'",
         ]
 
@@ -169,6 +170,7 @@ class PiCommand(PluginCommand):
             "'mkdir -p /home/pi/.kube'",
             "'sudo cp -i /etc/kubernetes/admin.conf /home/pi/.kube/config'",
             "'sudo chown 1000:1000 /home/pi/.kube/config'",
+            "'kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml'",
         ]
 
         self.run_many_commands(ips, commands)

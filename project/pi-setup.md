@@ -97,12 +97,12 @@ $ echo "kubectl get nodes" | cms pi cmd pi1
 
 The output should be like this:
 ```
-NAME   STATUS     ROLES    AGE    VERSION
-pi1    NotReady   master   27m    v1.17.0
-pi2    NotReady   <none>   20m    v1.17.0
-pi3    NotReady   <none>   101s   v1.17.0
-pi4    NotReady   <none>   76s    v1.17.0
-pi5    NotReady   <none>   39s    v1.17.0
+NAME   STATUS   ROLES    AGE    VERSION
+pi1    Ready    master   27m    v1.17.0
+pi2    Ready    <none>   20m    v1.17.0
+pi3    Ready    <none>   101s   v1.17.0
+pi4    Ready    <none>   76s    v1.17.0
+pi5    Ready    <none>   39s    v1.17.0
 ```
 
 As you can see, the master node has the role 'master' but the worker nodes have
@@ -116,12 +116,12 @@ $ cms pi label pi1 pi[2-5]
 Finally, the output of `kubectl get nodes` should look like this:
 
 ```
-NAME   STATUS     ROLES    AGE    VERSION
-pi1    NotReady   master   27m    v1.17.0
-pi2    NotReady   worker   20m    v1.17.0
-pi3    NotReady   worker   101s   v1.17.0
-pi4    NotReady   worker   76s    v1.17.0
-pi5    NotReady   worker   39s    v1.17.0
+NAME   STATUS   ROLES    AGE    VERSION
+pi1    Ready    master   27m    v1.17.0
+pi2    Ready    worker   20m    v1.17.0
+pi3    Ready    worker   101s   v1.17.0
+pi4    Ready    worker   76s    v1.17.0
+pi5    Ready    worker   39s    v1.17.0
 ```
 
 ## Details
