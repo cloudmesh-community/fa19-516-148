@@ -4,8 +4,10 @@
 <!-- vim: set tw=79 fo+=t fo-=l: -->
 
 After burning the Pis we need to set up the Pis. We developed a convenient set
-of deployment scripts that makes this possible. First, you must use
-cloudmesh-inventory to add your Pis to the inventory.
+of deployment scripts that makes this possible.
+
+### Configuring Inventory
+First, you must use cloudmesh-inventory to add your Pis to the inventory.
 
 ```bash
 $ cms inventory add pi[1-5] --cluster CLUSTER_NAME --service pi_kubernetes --label worker
@@ -13,6 +15,8 @@ $ cms inventory set pi1 label to master   # change label for one pi from worker 
 $ cms inventory set pi[1-5] ip to 192.168.1.[21-25]
   # (or if IPs are not contiguous, set one Pi/IP pair at a time)
 ```
+
+# Connecting to WiFi (optional)
 
 Next, cloudmesh-pi provides an automated setup process split into a few steps.
 Step 1 is to connect the Pis to the internet and set their timezone.
@@ -29,11 +33,15 @@ TODO Investigate automatically setting WiFi on each Pi, given the SSID+password
 once. See `do_wifi_ssid_passphrase`, line 1655:
 <https://github.com/RPi-Distro/raspi-config/blob/master/raspi-config#L1655>
 
+# Configure Timezones
+
 Once connected, this configures their timezones:
 
 ```bash
 $ cms pi setup1 pi[1-5]
 ```
+
+# Install Docker
 
 The next step is to install Docker on each Pi. This unfortunately must be done
 manually on each Pi; the installation script provided by Docker fails to run
@@ -54,6 +62,8 @@ That will install docker, then ring the terminal bell and close the SSH session
 (`exit`). cms pi ssh will automatically SSH to the next Pi, so you can just
 paste the same command in repeatedly until every Pi has Docker installed.
 
+# Finishing Setup
+
 The remaining setup steps are automated:
 
 ```bash
@@ -62,6 +72,8 @@ $ cms pi setup2 pi[1-5]
 
 This step can take a long time. The terminal bell will be rung when
 cloudmesh-pi is finished.
+
+# Creating a Cluster
 
 The final two steps are to configure the master node and make workers join the
 cluster.
