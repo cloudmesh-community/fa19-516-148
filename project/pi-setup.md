@@ -105,6 +105,25 @@ pi4    NotReady   <none>   76s    v1.17.0
 pi5    NotReady   <none>   39s    v1.17.0
 ```
 
+As you can see, the master node has the role 'master' but the worker nodes have
+no role. Label them with this command:
+
+```bash
+# on master node pi1, label nodes pi[2-5] as workers
+$ cms pi label pi1 pi[2-5]
+```
+
+Finally, the output of `kubectl get nodes` should look like this:
+
+```
+NAME   STATUS     ROLES    AGE    VERSION
+pi1    NotReady   master   27m    v1.17.0
+pi2    NotReady   worker   20m    v1.17.0
+pi3    NotReady   worker   101s   v1.17.0
+pi4    NotReady   worker   76s    v1.17.0
+pi5    NotReady   worker   39s    v1.17.0
+```
+
 ## Details
 
 ### cms pi setup

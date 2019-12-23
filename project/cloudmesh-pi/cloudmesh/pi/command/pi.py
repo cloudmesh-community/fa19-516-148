@@ -72,6 +72,7 @@ class PiCommand(PluginCommand):
                 pi setup2 HOSTS
                 pi setupmaster HOSTS
                 pi cmd HOSTS
+                pi label MASTER HOSTS
 
           Arguments:
               HOSTS   hostlist
@@ -98,6 +99,9 @@ class PiCommand(PluginCommand):
                   Run CMD on every host via SSH.
                   CMD is specified on stdin. For example:
                       $ echo "uname -a" | cms pi cmd pi[1-5]
+
+              pi label MASTER HOSTS:
+                  SSH to master node and label all worker nodes (HOSTS) as workers.
         """
 
         hosts = Parameter.expand(arguments.HOSTS)
@@ -119,6 +123,9 @@ class PiCommand(PluginCommand):
         elif arguments.cmd:
             # [:-1] to ignore the \n at the end of stdin
             self.run_many_commands(ips, [sys.stdin.read()[:-1]])
+        elif arguments.label:
+            master_ip = self.get_host_ips([arguments.MASTER], inv)[0]
+            self.label_nodes(master_ip, hosts)
 
     def setup_1(self, ips):
         tz = 'America/Indiana/Indianapolis'
@@ -166,3 +173,8 @@ class PiCommand(PluginCommand):
 
         self.run_many_commands(ips, commands)
         print('\a')
+
+    def label_nodes(self, master_ip, hosts):
+        cmd = "'kubectl label node {} node-role.kubernetes.io/worker=worker'"
+        commands = [cmd.format(host) for host in hosts]
+        self.run_many_commands([master_ip], commands)
