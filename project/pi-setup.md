@@ -1,8 +1,5 @@
 # Federated Kubernetes Clusters With Raspberry Pi
 
-<!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
-<!-- vim: set tw=79 fo+=t fo-=l: -->
-
 After burning the Pis we need to set up the Pis. We developed a convenient set
 of deployment scripts that makes this possible.
 
@@ -10,8 +7,11 @@ of deployment scripts that makes this possible.
 First, you must use cloudmesh-inventory to add your Pis to the inventory.
 
 ```bash
-$ cms inventory add pi[1-5] --cluster CLUSTER_NAME --service pi_kubernetes --label worker
-$ cms inventory set pi1 label to master   # change label for one pi from worker to master
+$ cms inventory add pi[1-5] --cluster CLUSTER_NAME\
+                            --service pi_kubernetes\ 
+                            --label worker
+$ cms inventory set pi1 label to master   
+  # change label for one pi from worker to master
 $ cms inventory set pi[1-5] ip to 192.168.1.[21-25]
   # (or if IPs are not contiguous, set one Pi/IP pair at a time)
 ```

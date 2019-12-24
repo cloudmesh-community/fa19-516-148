@@ -1,6 +1,4 @@
 # Federated Kubernetes Clusters With Raspberry Pi
-<!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
-<!-- vim: set tw=79 fo+=t fo-=l: -->
 
 Sub Raizada and Gregor von Laszewski, [fa19-516-148](https://github.com/cloudmesh-community/fa19-516-148)
 

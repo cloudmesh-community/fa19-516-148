@@ -1,10 +1,8 @@
-# Federated Kubernetes Clusters With Raspberry Pi - Docker Benchmarking/Test Image
-<!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
-<!-- vim: set tw=79 fo+=t fo-=l: -->
+# Docker Benchmark With Raspberry Pi
 
-A simple Docker image is used to test and benchmark the cluster. The image runs
-a HTTP server which will compute the factorial of a POSTed number and
-additionally return the real-world time used to compute it.
+A simple Docker image is used to test and benchmark the cluster. The
+image runs a HTTP server which will compute the factorial of a POSTed
+number and additionally return the real-world time used to compute it.
 
 Make a file called `Dockerfile` with content:
 
