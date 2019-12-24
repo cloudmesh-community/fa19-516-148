@@ -1,5 +1,7 @@
 # Federated Kubernetes Clusters With Raspberry Pi
 
+:o2: the report is moved to 2020
+
 Sub Raizada and Gregor von Laszewski, [fa19-516-148](https://github.com/cloudmesh-community/fa19-516-148)
 
 laszewski@gmail.com

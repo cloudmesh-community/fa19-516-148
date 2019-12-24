@@ -31,9 +31,10 @@ the SD card, and then rereading the data on the SD card to a file:
 
 ```
 $ cat 2019-09-26-raspbian-buster-lite.img >/dev/mmcblk0
-$ # now the SD card /dev/mmcblk0 has two partitions which you can mount and edit
+  # now the SD card /dev/mmcblk0 has two partitions which you can
+  # mount and edit
 $ mount /dev/mmcblk0p1 /your/mount/point
-$ # modify the files on the FS
+  # modify the files on the FS
 $ umount /dev/mmcblk0p1
 $ cat /dev/mmcblk0 >your-custom-sd-card-image.img
 ```
