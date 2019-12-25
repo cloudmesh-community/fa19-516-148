@@ -158,6 +158,7 @@ class PiCommand(PluginCommand):
             "'sudo update-rc.d dphys-swapfile remove'",
             "'sudo apt -y purge dphys-swapfile'",
             "'sudo /sbin/sysctl net.bridge.bridge-nf-call-iptables=1'",
+            "'echo \"net.ipv4.ip_forward=1\" | sudo tee -a /etc/sysctl.conf'",
             "'sudo reboot'",
         ]
 
