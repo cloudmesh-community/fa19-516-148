@@ -117,6 +117,9 @@ pi4    Ready    <none>   76s    v1.17.0
 pi5    Ready    <none>   39s    v1.17.0
 ```
 
+Tip: if the worker nodes show as 'NotReady', reboot the cluster:
+`echo sudo reboot | cms pi ssh pi[1-5]`
+
 As you can see, the master node has the role 'master' but the worker nodes have
 no role. Label them with this command:
 

@@ -1,6 +1,4 @@
 # Federated Kubernetes Clusters With Raspberry Pi - Docker Benchmarking/Test Image
-<!-- comment configures vim to enable word wrapping; gggqG to force rewrap -->
-<!-- vim: set tw=79 fo+=t fo-=l: -->
 
 A simple Docker image is used to test and benchmark the cluster. The image runs
 a HTTP server which will compute the factorial of a POSTed number and
@@ -9,7 +7,8 @@ additionally return the real-world time used to compute it.
 Make a file called `Dockerfile` with content:
 
 ```
-FROM python:latest
+FROM python:latest            # FOR RUNNING ON x64 COMPUTERS
+FROM arm32v7/python:latest    # FOR RUNNING ON RASPBERRY PIS
 COPY prog.py /
 EXPOSE 80
 CMD python3 prog.py
@@ -17,7 +16,9 @@ CMD python3 prog.py
 
 And a file `prog.py` with content:
 
-```
+```python
+#/usr/bin/env python3
+
 # server that returns the factorial of a given number, along with the time taken
 #  to compute it
 
@@ -56,14 +57,17 @@ if __name__ == '__main__':
 
 Build and then run the Docker image as follows:
 
-```
+```bash
 $ sudo docker build -t factorial .
-$ sudo docker run --rm -it --name factorial -p 8080:80 factorial
+(or, with a different name for the ARM image)
+$ sudo docker build -t factorial-arm .
+
+$ sudo docker run --rm -it --name factorial -p 8080:80 factorial[-arm]
 ```
 
 You can then test the program with this command:
 
-```
+```bash
 $ curl -X POST -d 5 localhost:8080
 ```
 
@@ -74,7 +78,12 @@ compute the factorial of.
 
 To publish the image to Docker Hub:
 
+```bash
+$ sudo docker build -t yourUsername/factorial[-arm]:v1 .
+$ sudo docker push yourUsername/factorial[-arm]:v1
 ```
-$ sudo docker build -t yourUsername/factorial:v1 .
-$ sudo docker push yourUsername/factorial:v1
-```
+
+I made an x64 image and ARM32v7 image and pushed them to my Docker Hub account
+as `subraizada3/factorial:v1` and `subraizada3/factorial-arm:v1`. These will be
+used later to benchmark the Kubernetes cluster. Of course, you can follow these
+steps to create your own identical image and use that for benchmarking.
