@@ -66,3 +66,5 @@ Some images are shown in cm-burn that we may want to copy here.
 
 * [`kubernetes.md`](kubernetes.md) contains documentation on running the Docker
   image on the Kubernetes cluster.
+
+* [`benchmark.md`](benchmark.md) contains benchmark methodoloy and results.

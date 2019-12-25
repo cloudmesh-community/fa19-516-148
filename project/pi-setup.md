@@ -158,20 +158,6 @@ See [`test.py`](test.py). Run it with the the first argument being the name
 given to the master node in cloudmesh-inventory (with the examples used earlier
 in this documentation, that was `pi1`).
 
-## Example
-
-We run the following example on the cluster to demonstrate its use
-
-TODO ... describe
-
-
-## Benchmark
-
-We observe the following benchmark results
-
-TODO ... describe what the results are
-:o2: network more important
-
 ## Network issues
 
 Kubernetes requires each node (master and worker) to have an internet
