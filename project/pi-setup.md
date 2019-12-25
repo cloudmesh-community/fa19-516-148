@@ -139,6 +139,21 @@ pi4    Ready    worker   76s    v1.17.0
 pi5    Ready    worker   39s    v1.17.0
 ```
 
+
+### Node SSH connections
+
+This step will allow each node to SSH to another node in the cluster
+
+```bash
+$ cms host key create pi[1-5]
+  # create RSA public/private keypair on each node
+$ cms host key list pi[1-5] >pubkeys.txt
+  # list all the public keys and save them into pubkeys.txt
+$ cms host key scp pi[1-5] pubkeys.txt
+  # add this computer's id_rsa.pub to pubkeys.txt, and push the result to each
+  #  Pi's authorized_keys file
+```
+
 ## Details
 
 ### cms pi setup
