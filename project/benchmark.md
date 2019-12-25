@@ -14,7 +14,7 @@ The following tests were used to benchmark the Pis in these setups:
       this will show the latency increase caused by the clustering software.
 
 * Big-N performance:
-    * Time required for calculating 10,000!
+    * Time required for calculating 100,000!
     * Overhead (same as in small-N test)
 
 ### Test configurations
