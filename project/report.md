@@ -63,3 +63,6 @@ Some images are shown in cm-burn that we may want to copy here.
 
 * [`docker.md`](docker.md) contains documentation on creating the Docker image
   used for testing.
+
+* [`kubernetes.md`](kubernetes.md) contains documentation on running the Docker
+  image on the Kubernetes cluster.

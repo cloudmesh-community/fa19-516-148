@@ -7,12 +7,17 @@ number and additionally return the real-world time used to compute it.
 Make a file called `Dockerfile` with content:
 
 ```
-FROM python:latest            # FOR RUNNING ON x64 COMPUTERS
-FROM arm32v7/python:latest    # FOR RUNNING ON RASPBERRY PIS
+FROM python:latest            # USE THIS LINE FOR RUNNING ON x64 COMPUTERS
+FROM arm32v7/python:latest    # USE THIS LINE FOR RUNNING ON RASPBERRY PIS
 COPY prog.py /
 EXPOSE 80
 CMD python3 prog.py
 ```
+
+Note that if you are making an x64 image (with `python:latest`) you will need to
+do these steps on an x64 computer, and if you are making an ARM32v7 image (with
+`arm32v7/python:latest`) you will need to do these steps on a Pi (or another
+ARM32v7 computer).
 
 And a file `prog.py` with content:
 
