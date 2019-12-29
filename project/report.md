@@ -55,8 +55,9 @@ Some images are shown in cm-burn that we may want to copy here.
 ## Other documentation files
 
 * [`sdcard-setup.md`](sdcard-setup.md) contains documentation on cm-pi-burn and
-  how the Pi images are modified/initialized. Also refer to the `cm-pi-burn.md`
-  file in the `cm-burn` repo.
+  how the Pi images are modified/initialized. Also refer to the
+  [`cm-pi-burn.md`](https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md)
+  file in the [`cm-burn`](https://github.com/cloudmesh/cloudmesh_pi_burn) repo.
 
 * [`pi-setup.md`](pi-setup.md) contains documentation on post-burn configuration
   that must be done after a Pi is booted up for the first time.
@@ -67,4 +68,4 @@ Some images are shown in cm-burn that we may want to copy here.
 * [`kubernetes.md`](kubernetes.md) contains documentation on running the Docker
   image on the Kubernetes cluster.
 
-* [`benchmark.md`](benchmark.md) contains benchmark methodoloy and results.
+* [`benchmark.md`](benchmark.md) contains benchmark methodology and results.
