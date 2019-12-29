@@ -9,7 +9,7 @@
 import sys
 
 if len(sys.argv) == 1:
-	print("See usage at top of this file")
+	print('See usage at top of this file')
 	sys.exit(0)
 
 
@@ -25,6 +25,9 @@ elif sys.argv[1] == 'medium':
 elif sys.argv[1] == 'large':
 	NUM_REQUESTS = 1
 	NUM = 100_000
+else:
+	print('See usage at top of this file')
+	sys.exit(0)
 
 # your computer should send requests fast enough to saturate all worker nodes
 # in this case, a 4-core PC *should* be able to saturate a 4-Pi cluster
@@ -94,7 +97,7 @@ print('{:.4f}'.format(shell_run_latency))
 print('Pinging server to measure RTT => ', end='', flush=True)
 ping_result = Shell.run(PING_CMD_STR)
 ping_result = ping_result.splitlines()[-1]
-avg_rtt = float(ping_result.split('/')[4])
+avg_rtt = float(ping_result.split('/')[4]) / 1000 # convert from ms to sec
 print(avg_rtt)
 print()
 
