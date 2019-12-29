@@ -55,9 +55,8 @@ absolute values.
 
 ### Small
 
-|            |        Latency        |  Server compute time  |       Overhead        |
-|------------|-----------|-----------|-----------|-----------|-----------|-----------|
-| Test setup |    avg    |   stdev   |    avg    |   stdev   |    avg    |   stdev   |
-| Bare-metal | 0         | 0         | 0         | 0         | 0         | 0         |
-| Single Pi  | 0         | 0         | 0         | 0         | 0         | 0         |
-| 4 Pi       | 0         | 0         | 0         | 0         | 0         | 0         |
+| Test setup | avg latency | stdev latency | avg srvr compute time | stdev srvr compute time | avg overhead | stdev overhead |
+|------------|-------------|---------------|-----------------------|-------------------------|--------------|----------------|
+| Bare-metal | 0           | 0             | 0                     | 0                       | 0            | 0              |
+| Single Pi  | 0           | 0             | 0                     | 0                       | 0            | 0              |
+| 4 Pi       | 0           | 0             | 0                     | 0                       | 0            | 0              |
