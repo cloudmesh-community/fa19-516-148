@@ -4,17 +4,17 @@ The following tests were used to benchmark the Pis in these setups:
 
 ### Tests
 
-Each test measures:
-
-* Requests per second (for small and medium N)
-* Latency (minus network RTT)
-* Overhead (latency minus RTT minus server-reported computation time)
-
 Tests:
 
 * Small-N: 2,000 requests for 5!
 * Medium-N: 300 requests for 30,000!
-* Big-N: One request for 100,000!
+* Large-N: One request for 100,000!
+
+Each test measures:
+
+* Requests per second (except for large-N)
+* Latency (request->response time minus network RTT minus benchmarker overhead)
+* Overhead (latency minus server-reported computation time)
 
 ### Test configurations
 
@@ -55,8 +55,26 @@ absolute values.
 
 ### Small
 
-| Test setup | avg latency | stdev latency | avg srvr compute time | stdev srvr compute time | avg overhead | stdev overhead |
-|------------|-------------|---------------|-----------------------|-------------------------|--------------|----------------|
-| Bare-metal | 0           | 0             | 0                     | 0                       | 0            | 0              |
-| Single Pi  | 0           | 0             | 0                     | 0                       | 0            | 0              |
-| 4 Pi       | 0           | 0             | 0                     | 0                       | 0            | 0              |
+| Test setup | avg latency | stdev latency | avg server compute time | stdev server compute time | avg overhead | stdev overhead |
+|------------|-------------|---------------|-------------------------|---------------------------|--------------|----------------|
+| Bare-metal | 0           | 0             | 0                       | 0                         | 0            | 0              |
+| Single Pi  | 0           | 0             | 0                       | 0                         | 0            | 0              |
+| 4 Pi       | 0           | 0             | 0                       | 0                         | 0            | 0              |
+
+
+### Medium
+
+| Test setup | avg latency | stdev latency | avg server compute time | stdev server compute time | avg overhead | stdev overhead |
+|------------|-------------|---------------|-------------------------|---------------------------|--------------|----------------|
+| Bare-metal | 0           | 0             | 0                       | 0                         | 0            | 0              |
+| Single Pi  | 0           | 0             | 0                       | 0                         | 0            | 0              |
+| 4 Pi       | 0           | 0             | 0                       | 0                         | 0            | 0              |
+
+
+### Large
+
+| Test setup | avg latency | stdev latency | avg server compute time | stdev server compute time | avg overhead | stdev overhead |
+|------------|-------------|---------------|-------------------------|---------------------------|--------------|----------------|
+| Bare-metal | 0           | 0             | 0                       | 0                         | 0            | 0              |
+| Single Pi  | 0           | 0             | 0                       | 0                         | 0            | 0              |
+| 4 Pi       | 0           | 0             | 0                       | 0                         | 0            | 0              |

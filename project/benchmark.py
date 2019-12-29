@@ -3,7 +3,7 @@
 # Usage:
 # ./benchmark.py small      # 2,000 requests for 5!
 # ./benchmark.py medium     #   300 requests for 30,000!
-# ./benchmark.py big        #     1 request  for 100,000!
+# ./benchmark.py large      #     1 request  for 100,000!
 # ./benchmark.py fast       # quick test to verify that benchmarker works
 
 import sys
@@ -22,7 +22,7 @@ elif sys.argv[1] == 'small':
 elif sys.argv[1] == 'medium':
 	NUM_REQUESTS = 300
 	NUM = 30_000
-elif sys.argv[1] == 'big':
+elif sys.argv[1] == 'large':
 	NUM_REQUESTS = 1
 	NUM = 100_000
 
