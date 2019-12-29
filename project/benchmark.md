@@ -55,7 +55,7 @@ absolute values.
 
 ### Small
 
-|            |        Latency        |  Server compute time  |       Overhead        | asdf | asdf | asdf |
+| asdf       |        Latency        |  Server compute time  |       Overhead        | asdf | asdf | asdf |
 | Test setup |    avg    |   stdev   |    avg    |   stdev   |    avg    |   stdev   |
 |------------|-----------|-----------|-----------|-----------|-----------|-----------|
 | Bare-metal | 0         | 0         | 0         | 0         | 0         | 0         |
