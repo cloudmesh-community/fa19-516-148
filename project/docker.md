@@ -22,7 +22,7 @@ ARM32v7 computer).
 And a file `prog.py` with content:
 
 ```python
-#/usr/bin/env python3
+#!/usr/bin/env python3
 
 # server that returns the factorial of a given number, along with the time taken
 #  to compute it
