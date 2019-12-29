@@ -1,19 +1,38 @@
 #!/usr/bin/env python3
 
 # Usage:
-# ./benchmark.py
-# ./benchmark.py fast      # much quicker, but less useful results
+# ./benchmark.py small      # 2,000 requests for 5!
+# ./benchmark.py medium     #   300 requests for 30,000!
+# ./benchmark.py big        #     1 request  for 100,000!
+# ./benchmark.py fast       # quick test to verify that benchmarker works
 
 import sys
 
-# Fast   =>  20 requests for 5!
-# Normal => 300 requests for 30,000!
-if len(sys.argv) == 2:
+if len(sys.argv) == 1:
+	print("See usage at top of this file")
+	sys.exit(0)
+
+
+if sys.argv[1] == 'fast':
 	NUM_REQUESTS = 20
 	NUM = 5 # to compute factorial of
-else:
+elif sys.argv[1] == 'small':
+	NUM_REQUESTS = 2_000
+	NUM = 5
+elif sys.argv[1] == 'medium':
 	NUM_REQUESTS = 300
-	NUM = 30_000 # to compute factorial of
+	NUM = 30_000
+elif sys.argv[1] == 'big':
+	NUM_REQUESTS = 1
+	NUM = 100_000
+
+# your computer should send requests fast enough to saturate all worker nodes
+# in this case, a 4-core PC *should* be able to saturate a 4-Pi cluster
+NUM_THREADS = 4
+
+SERVER_IP = 'localhost'
+SERVER_PORT = '8080'
+
 
 
 import math
@@ -24,10 +43,6 @@ from pprint import pprint
 from statistics import mean, pstdev
 
 
-NUM_THREADS = 4
-
-SERVER_IP = 'localhost'
-SERVER_PORT = '8080'
 SERVER_IP_PORT = f'{SERVER_IP}:{SERVER_PORT}'
 
 CURL_CMD_STR_TEMPLATE = 'curl -s -X POST -d {} {}'
