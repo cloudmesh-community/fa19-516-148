@@ -78,3 +78,23 @@ absolute values.
 | Bare-metal | 79.8014     | 0             | 3.1747                  | 0                         | 76.6268      | 0              |
 | Single Pi  | 82.4267     | 0             | 4.1829                  | 0                         | 78.2437      | 0              |
 | 4 Pi       | 82.9208     | 0             | 4.1593                  | 0                         | 78.7614      | 0              |
+
+# Analysis
+
+For the small case when computing 5! many times, the time required to actually compute 5! is effectively 0, so this test mainly measures all the overhead from the OS + Docker + Kubernetes. The Python+Docker (bare-metal) and single-worker-node Kubernetes setups both had similar latencies, but the four-node Kubernetes cluster had a much higher latency per request. I suspect this is due to the overhead of having to coordinate the routing of requests between the four nodes.
+
+For the medium case when computing 30,000! many times, Python+Docker and single-node Kubernetes both had similar performances, but the four-node Kubernetes cluster performed 2-3x better. When the factorial computations actually took some time, having four nodes to distribute the many requests across allowed the system to perform better overall.
+
+For the large case when computing 100,000! once, the three setups had overall similar performances, with Kubernetes adding a small overhead. Of note is that the server reported that computing 100,000! took 3-4 seconds, but on the client side it took about 80 seconds between sending the request and getting the result. I haven't been able to figure out why this is the case - running this minimal timing example directly on a Pi, the program correctly prints out that 80 seconds have elapsed, and it does actually take 80 seconds to run:
+
+```python
+#!/usr/bin/env python3
+import math
+from time import time
+
+start_time = time()
+print(math.factorial(100000))  # without print(), this call is optimized out
+print(time() - start_time)
+```
+
+This is the same timing code used in the Docker image being run on the Pis and in Kubernetes. Perhaps this is an issue with Docker and with the Pi not having a hardware clock?
