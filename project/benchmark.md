@@ -57,24 +57,24 @@ absolute values.
 
 | Test setup | avg latency | stdev latency | avg server compute time | stdev server compute time | avg overhead | stdev overhead |
 |------------|-------------|---------------|-------------------------|---------------------------|--------------|----------------|
-| Bare-metal | 0           | 0             | 0                       | 0                         | 0            | 0              |
-| Single Pi  | 0           | 0             | 0                       | 0                         | 0            | 0              |
-| 4 Pi       | 0           | 0             | 0                       | 0                         | 0            | 0              |
+| Bare-metal | 0.0275      | 0.0233        | 0                       | 0                         | 0.0275       | 0.0233         |
+| Single Pi  | 0.0182      | 0.0570        | 0                       | 0                         | 0.0182       | 0.0570         |
+| 4 Pi       | 0.0587      | 0.0361        | 0                       | 0                         | 0.0587       | 0.0361         |
 
 
 ### Medium
 
 | Test setup | avg latency | stdev latency | avg server compute time | stdev server compute time | avg overhead | stdev overhead |
 |------------|-------------|---------------|-------------------------|---------------------------|--------------|----------------|
-| Bare-metal | 0           | 0             | 0                       | 0                         | 0            | 0              |
-| Single Pi  | 0           | 0             | 0                       | 0                         | 0            | 0              |
-| 4 Pi       | 0           | 0             | 0                       | 0                         | 0            | 0              |
+| Bare-metal | 27.6534     | 3.7078        | 0.6060                  | 0.1572                    | 27.0474      | 3.5781         |
+| Single Pi  | 24.6364     | 1.7218        | 0.5143                  | 0.0208                    | 21.1221      | 1.7246         |
+| 4 Pi       | 11.4966     | 5.4865        | 0.5353                  | 0.0254                    | 10.9613      | 5.4930         |
 
 
 ### Large
 
 | Test setup | avg latency | stdev latency | avg server compute time | stdev server compute time | avg overhead | stdev overhead |
 |------------|-------------|---------------|-------------------------|---------------------------|--------------|----------------|
-| Bare-metal | 0           | 0             | 0                       | 0                         | 0            | 0              |
-| Single Pi  | 0           | 0             | 0                       | 0                         | 0            | 0              |
-| 4 Pi       | 0           | 0             | 0                       | 0                         | 0            | 0              |
+| Bare-metal | 79.8014     | 0             | 3.1747                  | 0                         | 76.6268      | 0              |
+| Single Pi  | 82.4267     | 0             | 4.1829                  | 0                         | 78.2437      | 0              |
+| 4 Pi       | 82.9208     | 0             | 4.1593                  | 0                         | 78.7614      | 0              |
