@@ -12,7 +12,8 @@ In a root shell:
 # cm-pi-burn.py image ls
 # cm-pi-burn.py create --image=2019-09-26-raspbian-buster-lite
                        --device=/dev/mmcblk0
-                       --hostname=red[2-6] --ipaddr=192.168.1.[2-6]
+                       --hostname=red[2-6] 
+											 --ipaddr=192.168.1.[2-6]
                        --sshkey=id_ed25519
 ```
 
