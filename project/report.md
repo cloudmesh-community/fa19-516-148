@@ -8,13 +8,6 @@ laszewski@gmail.com
 
 [Insights](https://github.com/cloudmesh-community/fa19-516-148/graphs/contributors)
 
-:o2: please report on progress on the kubernetes cluster
-
-do you have a command such as
-
-cms kubernetes deploy ... ?
-
-
 ## Abstract
 
 ## Introduction
