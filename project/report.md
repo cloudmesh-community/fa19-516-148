@@ -47,23 +47,18 @@ Some images are shown in cm-burn that we may want to copy here.
 
 ## Other documentation files
 
-* [`sdcard-setup.md`](https://github.com/cloudmesh-community/fa19-516-148/blob/master/project/
-sdcard-setup.md) contains documentation on cm-pi-burn and
+* [`sdcard-setup.md`](https://github.com/cloudmesh-community/fa19-516-148/blob/master/project/sdcard-setup.md) contains documentation on cm-pi-burn and
   how the Pi images are modified/initialized. Also refer to the
   [`cm-pi-burn.md`](https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md)
   file in the [`cm-burn`](https://github.com/cloudmesh/cloudmesh_pi_burn) repo.
 
-* [`pi-setup.md`](https://github.com/cloudmesh-community/fa19-516-148/blob/master/project/
-pi-setup.md) contains documentation on post-burn configuration
+* [`pi-setup.md`](https://github.com/cloudmesh-community/fa19-516-148/blob/master/project/pi-setup.md) contains documentation on post-burn configuration
   that must be done after a Pi is booted up for the first time.
 
-* [`docker.md`](https://github.com/cloudmesh-community/fa19-516-148/blob/master/project/
-docker.md) contains documentation on creating the Docker image
+* [`docker.md`](https://github.com/cloudmesh-community/fa19-516-148/blob/master/project/docker.md) contains documentation on creating the Docker image
   used for testing.
 
-* [`kubernetes.md`](https://github.com/cloudmesh-community/fa19-516-148/blob/master/project/
-kubernetes.md) contains documentation on running the Docker
+* [`kubernetes.md`](https://github.com/cloudmesh-community/fa19-516-148/blob/master/project/kubernetes.md) contains documentation on running the Docker
   image on the Kubernetes cluster.
 
-* [`benchmark.md`](https://github.com/cloudmesh-community/fa19-516-148/blob/master/project/
-benchmark.md) contains benchmark methodology and results.
+* [`benchmark.md`](https://github.com/cloudmesh-community/fa19-516-148/blob/master/project/benchmark.md) contains benchmark methodology and results.
